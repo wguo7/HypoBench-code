@@ -17,7 +17,7 @@ BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 DATA_DIR="$BASE_DIR/hypogenic/data"
 
 # ==========================================
-# SUPPORTED REAL DATASETS
+# REAL DATASETS
 # ==========================================
 echo ""
 echo "=== REAL DATASETS (HypotheSAEs) ==="
