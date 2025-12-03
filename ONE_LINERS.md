@@ -121,28 +121,3 @@ python comparison/hypothesaes_runner.py --dataset_name persuasive_pairs --data_d
 # Run HypotheSAEs on supported datasets
 .\run_all_hypothesaes.ps1 -ModelName "gpt-4o-mini" -NumHypotheses 20
 ```
-
----
-
-## Python API
-
-You can also use the Python API directly:
-
-```python
-from generate_all_hypotheses import run_hypogenic, run_hypothesaes
-
-# HypoGenic
-results = run_hypogenic(
-    config_path="./hypogenic/data/real/deceptive_reviews/config.yaml",
-    num_hypotheses=20,
-    model_name="gpt-4o-mini"
-)
-
-# HypotheSAEs
-results = run_hypothesaes(
-    dataset_name="deceptive_reviews",
-    data_dir="./hypogenic/data/real/deceptive_reviews",
-    num_hypotheses=20
-)
-```
-
