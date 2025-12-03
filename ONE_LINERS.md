@@ -146,37 +146,3 @@ results = run_hypothesaes(
 )
 ```
 
----
-
-## Dataset Summary
-
-### Real-World Datasets (16 total)
-- **deceptive_reviews**: Hotel review authenticity detection
-- **dreaddit**: Reddit stress detection
-- **gptgc_detect**: GPT-generated content detection
-- **headline_binary**: Sarcasm detection in headlines
-- **llamagc_detect**: LLaMA-generated content detection
-- **persuasive_pairs**: Persuasiveness comparison
-- **retweet**: Retweet prediction
-- **journal_cross/***: Cross-journal citation prediction (6 variants)
-- **journal_same/***: Same-journal citation prediction (3 variants)
-
-### Synthetic Datasets (100+ variants)
-- **shoe**: Basic shoe color prediction
-- **shoe_two_level**: Two-level complexity shoe prediction
-- **admission**: University admission prediction (multiple difficulty levels)
-- **admission_adv**: Advanced admission prediction
-- **election**: Election voting preference prediction
-- **election_controlled**: Controlled election experiments
-- **preference**: User preference prediction
-- **preference_controlled**: Controlled preference experiments
-
----
-
-## Notes
-
-1. **API Keys**: Ensure `OPENAI_API_KEY` is set in your environment for both methods.
-2. **Memory**: Some datasets are large; adjust `num_train` and `num_test` as needed.
-3. **Time**: Full benchmark runs can take several hours depending on dataset size and API rate limits.
-4. **Output**: Results are saved in `./outputs/hypogenic/` and `./outputs/hypothesaes/` directories.
-
