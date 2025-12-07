@@ -63,27 +63,6 @@ python generate_hypotheses.py --method hypogenic --all
 python generate_hypotheses.py --method hypothesaes --all
 ```
 
----
-
-## Supported Datasets
-
-### Real-World Datasets
-
-| Dataset | Task | HypoGenic | HypotheSAEs |
-|---------|------|-----------|-------------|
-| deceptive_reviews | Binary: deceptive vs truthful | ✅ | ✅ |
-| retweet | Pairwise: which tweet gets more retweets | ✅ | ✅ |
-| dreaddit | Binary: stress vs no stress | ✅ | ✅ |
-| headline_binary | Pairwise: which headline gets more clicks | ✅ | ✅ |
-| gptgc_detect | Binary: AI vs human written (GPT) | ✅ | ✅ |
-| llamagc_detect | Binary: AI vs human written (LLaMA) | ✅ | ✅ |
-| persuasive_pairs | Pairwise: which argument is more persuasive | ✅ | ✅ |
-
-### Synthetic Datasets
-HypoGenic supports all synthetic datasets via config.yaml files in `synthetic_datasets/`.
-
----
-
 ## Method Details
 
 ### HypoGenic
@@ -105,16 +84,7 @@ hypogenic_generation \
     4096 1e-5
 ```
 
-> **Note:** The last two positional arguments (`4096 1e-5`) are `max_tokens` and `temperature`. This is due to a bug in the CLI where these are defined as positional instead of optional arguments.
-
-### HypotheSAEs
-
-Uses `hypothesaes_runner.py`. Generates hypotheses through:
-1. Embed texts using OpenAI embeddings
-2. Train Sparse Autoencoder (SAE)
-3. Select predictive neurons (correlation/lasso/separation)
-4. Interpret neurons as hypotheses using LLM
-5. Evaluate hypothesis quality
+> **Note:** The last two positional arguments (`4096 1e-5`) are `max_tokens` and `temperature`.
 
 **Command Format:**
 ```bash
@@ -126,25 +96,6 @@ python hypothesaes_runner.py \
     --max_num_hypotheses 20 \
     --seed 42
 ```
-
----
-
-## HypoGenic CLI vs pipeline.py
-
-The `hypogenic_generation` CLI and `pipeline.py` both implement the same core algorithm:
-
-| Aspect | CLI | pipeline.py |
-|--------|-----|-------------|
-| Class instantiation | Register-based (`generation_register.build`) | Direct (`DefaultGeneration`) |
-| Default behavior | Equivalent (both use `DefaultX` classes) | Same |
-| Supported methods | Only default HypoGenic | Multiple (zero-shot, literature, refine, etc.) |
-| Output location | Configurable via `--output_folder` | Fixed `./results/` structure |
-
-**When to use which:**
-- **CLI**: Simple hypothesis generation, one dataset at a time
-- **pipeline.py**: Full evaluation pipeline, multiple methods, cross-model experiments
-
----
 
 ## Output Format
 
