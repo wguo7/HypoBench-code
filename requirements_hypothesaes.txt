@@ -1,0 +1,18 @@
+# Additional requirements for HypotheSAEs
+# Install these ON TOP of hypogenic requirements
+#
+# First install hypogenic:
+#   cd hypogenic && pip install -e .
+#
+# Then install these additional packages:
+
+scipy>=1.11.0
+sentence-transformers>=2.2.0
+statsmodels>=0.14.0
+tiktoken>=0.5.0
+jmespath>=1.0.0
+
+# Optional (for notebooks/experiments):
+# jupyter
+# vllm  # for local model inference
+

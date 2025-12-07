@@ -151,33 +151,34 @@ Features should describe patterns indicating stress levels. For example:
                 'train_file': 'headline_binary_train.json',
                 'test_file': 'headline_binary_test.json',
                 'val_file': None,
-                'text_field': 'headline',
+                'text_fields': ['headline_1', 'headline_2'],
                 'label_field': 'label',
-                'label_map': {'sarcastic': 1, 'not_sarcastic': 0},
-                'task_type': 'binary_classification',
+                'label_map': {'Headline 1 has more clicks than Headline 2.': 0, 'Headline 2 has more clicks than Headline 1.': 1},
+                'task_type': 'pairwise_classification',
                 'M': 512,
                 'K': 8,
                 'matryoshka_prefix_lengths': [64, 512],
-                'task_instructions': """All texts are news headlines.
-Features should describe patterns indicating sarcasm. For example:
-- "uses hyperbolic language"
-- "contains ironic juxtaposition"
-- "mocks typical headline conventions"
-- "expresses fake enthusiasm"
+                'task_instructions': """All texts are pairs of news headlines about the same topic.
+Features should describe patterns that make headlines more clickable. For example:
+- "uses numbers or statistics"
+- "poses a question"
+- "creates a sense of urgency"
+- "uses strong emotional language"
+- "includes a surprising or counterintuitive claim"
 """
             },
             'gptgc_detect': {
                 'train_file': 'WP_aigc_detect_train.json',
                 'test_file': 'WP_aigc_detect_test.json',
                 'val_file': 'WP_aigc_detect_val.json',
-                'text_field': 'text',
+                'text_field': 'story',
                 'label_field': 'label',
-                'label_map': {'AI-generated': 1, 'human-written': 0},
+                'label_map': {'AI': 1, 'HUMAN': 0},
                 'task_type': 'binary_classification',
                 'M': 512,
                 'K': 8,
                 'matryoshka_prefix_lengths': [64, 512],
-                'task_instructions': """All texts are writing samples (GPT-generated vs human-written).
+                'task_instructions': """All texts are creative writing stories (GPT-generated vs human-written).
 Features should describe patterns distinguishing AI-generated from human-written text. For example:
 - "uses overly formal or polished language"
 - "lacks personal anecdotes or experiences"
@@ -189,14 +190,14 @@ Features should describe patterns distinguishing AI-generated from human-written
                 'train_file': 'WP_aigc_detect_train.json',
                 'test_file': 'WP_aigc_detect_test.json',
                 'val_file': 'WP_aigc_detect_val.json',
-                'text_field': 'text',
+                'text_field': 'story',
                 'label_field': 'label',
-                'label_map': {'AI-generated': 1, 'human-written': 0},
+                'label_map': {'AI': 1, 'HUMAN': 0},
                 'task_type': 'binary_classification',
                 'M': 512,
                 'K': 8,
                 'matryoshka_prefix_lengths': [64, 512],
-                'task_instructions': """All texts are writing samples (LLaMA-generated vs human-written).
+                'task_instructions': """All texts are creative writing stories (LLaMA-generated vs human-written).
 Features should describe patterns distinguishing AI-generated from human-written text. For example:
 - "uses overly formal or polished language"
 - "lacks personal anecdotes or experiences"
@@ -208,14 +209,14 @@ Features should describe patterns distinguishing AI-generated from human-written
                 'train_file': 'persuasive_pairs_human_gt_ind_train.json',
                 'test_file': 'persuasive_pairs_human_gt_ind_test.json',
                 'val_file': 'persuasive_pairs_human_gt_ind_val.json',
-                'text_fields': ['more_persuasive', 'less_persuasive'],
+                'text_fields': ['argument_1', 'argument_2'],
                 'label_field': 'label',
                 'label_map': {'first': 0, 'second': 1},
                 'task_type': 'pairwise_classification',
                 'M': 512,
                 'K': 8,
                 'matryoshka_prefix_lengths': [64, 512],
-                'task_instructions': """All texts are pairs of persuasive arguments.
+                'task_instructions': """All texts are pairs of persuasive arguments on the same topic.
 Features should describe patterns that make text more persuasive. For example:
 - "uses concrete examples and evidence"
 - "appeals to emotions"
